@@ -20,6 +20,8 @@ void sa(s_list **a)
     s_list *temp;
     s_list  *hold;
 
+    if (size(a) <= 1)
+        return;
     temp = *a;
     new_first = temp->next;
     hold = new_first->next;
@@ -34,6 +36,8 @@ void sb(s_list **b)
     s_list *temp;
     s_list  *hold;
 
+    if (size(b) <= 1)
+        return;
     temp = *b;
     new_first = temp->next;
     hold = new_first->next;
@@ -168,7 +172,7 @@ void    rrr(s_list **a, s_list **b)
 
 int main(void)
 {
-    //0,5,2,6,4,8
+   
     
     s_list *head1 = lst_new(9);
     s_list *b = lst_new(5);
@@ -176,6 +180,7 @@ int main(void)
     s_list *d = lst_new(6);
     s_list *e = lst_new(4);
     s_list *f = lst_new(8);
+   
 
     head1->next = b; 
     b->next = c;
@@ -198,9 +203,12 @@ int main(void)
 
    
 
-    //sa(&head);
-    pa(&head1, &head2);
+    sa(&head1);
+    // pa(&head1, &head2);
     //rra(&head2);
+
+    // int a = size(&head1);
+    //printf("%d", a);
    
 
     while(head1)
@@ -208,7 +216,7 @@ int main(void)
         printf("%d\n", head1->content);
         head1 = head1->next;
     }
-
+    printf("------------\n");
     while(head2)
     {
         printf("%d\n", head2->content);
@@ -216,7 +224,5 @@ int main(void)
     }
 
     return (0);
-
-
 
 }

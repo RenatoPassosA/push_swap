@@ -22,3 +22,4 @@ typedef struct s_list
 
 s_list *lst_new(int n);
 void add_back(s_list **head, s_list *new);
+int    size(s_list **head);

@@ -41,3 +41,25 @@ void add_back(s_list **head, s_list *new)
         current = current->next;
     current->next = new;
 }
+
+int    size(s_list **head)
+{
+    int count = 1;
+    s_list *nodes;
+
+    nodes = *head;
+    
+    if (!nodes)
+        return (0);
+    while(nodes->next)
+    {
+        count++;
+        nodes = nodes->next;
+    }
+    return (count);
+    
+    
+
+
+
+}
