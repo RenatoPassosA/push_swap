@@ -57,9 +57,54 @@ int    size(s_list **head)
         nodes = nodes->next;
     }
     return (count);
+}
+
+int find_pivot(s_list **head)
+{
+    s_list *current = *head;
+    int amount;
+    int up;
+    int down;
+
+    amount = 0;
+    up = 0;
+    down = 0;
+    while(current)
+    {
+        amount += (current->content);
+        current = current->next;
+    }
+    amount /= size(head);
+    up = amount;
+    down = amount;
+    while(1)
+    {
+        current = *head;
+        up++;
+        down--;
+        while (current)
+        {
+            if (current->content == up)
+                return (up);
+            if (current->content == down)
+                return (down);
+            current = current->next;
+        }
+    }
+    return (0);
+}
+
+int ordered(s_list **head)
+{
+    s_list *current;
     
-    
-
-
-
+    current = *head;
+    while (current && current->next)
+    {
+        if (current->content < current->next->content)
+            current = current->next;
+        else
+            return(0);   
+    }
+    return(1);
 }

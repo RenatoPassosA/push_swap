@@ -27,7 +27,7 @@ void sa(s_list **a)
     hold = new_first->next;
     new_first->next = temp;
     temp->next = hold;
-    *a = new_first; 
+    *a = new_first;
 }
 
 void sb(s_list **b)
@@ -56,7 +56,7 @@ void ss(s_list **a, s_list **b)
 
 void pa(s_list **a, s_list**b)
 {
-    if (!b)
+    if (!(*b))
         return ;
     s_list *first_b;
 
@@ -68,7 +68,7 @@ void pa(s_list **a, s_list**b)
 
 void pb(s_list **a, s_list**b)
 {
-    if (!a)
+    if (!(*a))
         return ;
     s_list *first_a;
 
@@ -85,6 +85,8 @@ void    ra(s_list **a)
     s_list  *first;
     s_list  *last;
     
+    if (size(a) < 2)
+        return ;
     first = *a;
     *a = first->next; //o primeiro nó da lista vira o segundo
     first->next = NULL;
@@ -99,6 +101,8 @@ void    rb(s_list **b)
     s_list  *first;
     s_list  *last;
     
+    if (size(b) < 2)
+        return ;
     first = *b;
     *b = first->next;
     first->next = NULL;
@@ -168,18 +172,114 @@ void    rrr(s_list **a, s_list **b)
     rrb(b);
 }
 
+//QUICK SORT
+
+void    quick(s_list **head1, s_list **head2, int check, char operator)
+{
+    int pivot;
+    int stack_size;
+    s_list *stack;
+    
+    pivot = find_pivot(head1);
+    printf("PIVO:%d\n", pivot);
+    stack = *head1;
+    stack_size = size(head1);
+    while(stack_size > 0)
+    {
+        stack = *head1;
+        if (operator == '<')
+        {
+            if (stack->content < pivot)
+            {
+                pb(head1, head2);
+            }
+            else
+                ra(head1); //aqui funciona - testei com mais ifs iguais a esse e responde certo
+            stack_size--;
+        }
+        else
+         {
+            if (stack->content > pivot)
+            {
+                pb(head1, head2);
+            }
+            else
+                ra(head1); //aqui funciona - testei com mais ifs iguais a esse e responde certo
+            stack_size--;
+        
+        //tornar esse if recursivo
+         }
+    check++;
+    if (ordered(head1) && ordered(head2))
+    {
+        printf("FOI");
+        return ;
+    }
+        if (check % 2 == 0)
+            quick(head1, head2, check, '<');
+        else
+            quick(head2, head1, check, '>');
+    }
+
+   /*s_list *aa = *head1;
+    s_list *bb = *head2;
+    
+    while(aa)
+    {
+        printf("%d\n", aa->content);
+        aa = aa->next;
+    }
+    printf("------------\n");
+    while(bb)
+    {
+        printf("%d\n", bb->content);
+        bb = bb->next;
+    }
+
+    pivot = find_pivot(head2);
+    printf("PIVO:%d\n", pivot);
+    stack = *head2;
+    stack_size = size(head2);
+    while(stack_size > 0)
+    {
+        
+        if (stack->content < pivot)
+        {
+            pb(head2, head1);
+            stack = *head2;
+        }
+        else
+            ra(head2); //aqui funciona - testei com mais ifs iguais a esse e responde certo
+        stack_size--;
+        //tornar esse if recursivo
+    }
+    check++;
+
+while(aa)
+    {
+        printf("%d\n", aa->content);
+        aa = aa->next;
+    }
+    printf("------------\n");
+    while(bb)
+    {
+        printf("%d\n", bb->content);
+        bb = bb->next;
+    }*/
+}
+
 
 
 int main(void)
 {
    
     
-    s_list *head1 = lst_new(9);
-    s_list *b = lst_new(5);
-    s_list *c = lst_new(2);
-    s_list *d = lst_new(6);
-    s_list *e = lst_new(4);
-    s_list *f = lst_new(8);
+    s_list *head1 = lst_new(2);
+    s_list *b = lst_new(3);
+    s_list *c = lst_new(20);
+    s_list *d = lst_new(1);
+    s_list *e = lst_new(6);
+    s_list *f = lst_new(4);
    
 
     head1->next = b; 
@@ -188,7 +288,11 @@ int main(void)
     d->next = e;
     e->next = f;
 
-    s_list *head2 = lst_new(10);
+    s_list *head2 = NULL;
+
+    quick(&head1, &head2, 0, '<');
+
+    /*s_list *head2 = lst_new(10);
     s_list *b2 = lst_new(11);
     s_list *c2 = lst_new(12);
     s_list *d2 = lst_new(13);
@@ -199,19 +303,24 @@ int main(void)
     b2->next = c2;
     c2->next = d2;
     d2->next = e2;
-    e2->next = f2;
+    e2->next = f2;*/
 
-   
-
-    sa(&head1);
-    // pa(&head1, &head2);
+    //sa(&head1);
+    //pb(&head1, &head2);
+    //pb(&head1, &head2);
+    //rb(&head2);
     //rra(&head2);
 
     // int a = size(&head1);
     //printf("%d", a);
    
+    //int a = find_pivot(&head1);
+    //printf("%d", a);
 
-    while(head1)
+    //int a = ordered(&head1);
+    //printf("%d", a);
+
+    /*while(head1)
     {
         printf("%d\n", head1->content);
         head1 = head1->next;
@@ -221,8 +330,9 @@ int main(void)
     {
         printf("%d\n", head2->content);
         head2 = head2->next;
-    }
+    }*/
 
     return (0);
 
 }
+
