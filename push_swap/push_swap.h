@@ -36,4 +36,9 @@ void    rr(s_list **a, s_list **b);
 void    rra(s_list **a);
 void    rrb(s_list **b);
 void    rrr(s_list **a, s_list **b);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	**ft_split(char const *s, char c);
+int	check_char(char **arr);
+int	ft_atol(char *s);
+size_t	ft_strlen(const char *str);
 

@@ -21,7 +21,6 @@ int get_num_bites(int a)
     {
         bites++;
         max_bites >>= 1;
-        
     }
     return (bites);
 }
@@ -59,51 +58,50 @@ void    radix(s_list **a, s_list **b)
 
 
 
-int main(void)
+
+int main(int ac, char **av)
 {
-   
-    
-    s_list *head1 = lst_new(87);
-    s_list *b = lst_new(-487);
-    s_list *c = lst_new(1781);
-    s_list *d = lst_new(-100);
-    s_list *e = lst_new(101);
-    s_list *f = lst_new(0);
-    s_list *g = lst_new(1);
-    
-    head1->next = b; 
-    b->next = c;
-    c->next = d;
-    d->next = e;
-    e->next = f;
-    f->next = g;
-    g->next = NULL;
+    int index;
+    int nums;
+    char *inputs;
+    char **arr;
+    s_list *list_a;
+    s_list *list_b;
 
-    s_list *head2 = NULL;
-
-    set_index(&head1);
-
-    radix(&head1, &head2);
-
-
-
-   
-    /*printf("LISTA A:\n");
-    while(head1)
+    index = 1;
+    nums = 1;
+    if (ac == 1)
     {
-        printf("C: %d\n", head1->content);
-        head1 = head1->next;
+        printf("Error - (nenhum argumento)\n");
+        return (0);
     }
-    printf("------------\n");
-    while(head2)
+    else
     {
-        printf("C: %d\n", head2->content);
-        head2 = head2->next;
-    }*/
-
+        while (index < ac)
+        {
+            inputs = ft_strjoin(inputs, av[index]);
+            index++;
+        }
+        arr = ft_split(inputs, ' ');
+        if (!check_char(arr))
+            printf("Error - (caracter como parametro)\n");
+        index = 0;
+        while (*arr[index] != '\0')
+            index++;
+        list_a =  lst_new(ft_atol(arr[0]));
+        while(nums <= index)
+        {
+            list_b = lst_new(ft_atol(arr[nums]));
+            add_back(&list_a, list_b);
+            nums++;
+        }
+        list_b = NULL;
+    }
     
+    set_index(&list_a);
+    //radix(&list_a, &list_b);
 
-    while(head1)
+   /*while(head1)
     {
         printf("I: %d\n", head1->index);
         head1 = head1->next;
@@ -113,7 +111,7 @@ int main(void)
     {
         printf("I: %d\n", head2->index);
         head2 = head2->next;
-    }
+    }*/
 
     return (0);
 
