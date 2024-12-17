@@ -20,6 +20,7 @@ s_list *lst_new(int n)
     if (!node)
         return(NULL);
     node->content = n;
+    node->index = -1;
     node->next = NULL;
     return(node);
 }
@@ -59,52 +60,30 @@ int    size(s_list **head)
     return (count);
 }
 
-int find_pivot(s_list **head)
+void set_index(s_list **head)
 {
-    s_list *current = *head;
-    int amount;
-    int up;
-    int down;
-
-    amount = 0;
-    up = 0;
-    down = 0;
-    while(current)
-    {
-        amount += (current->content);
-        current = current->next;
-    }
-    amount /= size(head);
-    up = amount;
-    down = amount;
-    while(1)
+    s_list  *current;
+    s_list *ptr;
+    int i = 0;
+    int min;
+    
+    while (i < size(head))
     {
         current = *head;
-        up++;
-        down--;
-        while (current)
+        min = INT_MAX;
+        while(current)
         {
-            if (current->content == up)
-                return (up);
-            if (current->content == down)
-                return (down);
+            if (current->content < min && current->index == -1)
+            {
+                min = current->content;
+                ptr = current;
+            }
             current = current->next;
         }
+        if (ptr == NULL)
+            return ;
+        ptr->index = i;
+        ptr = NULL;
+        i++;
     }
-    return (0);
-}
-
-int ordered(s_list **head)
-{
-    s_list *current;
-    
-    current = *head;
-    while (current && current->next)
-    {
-        if (current->content < current->next->content)
-            current = current->next;
-        else
-            return(0);   
-    }
-    return(1);
 }
