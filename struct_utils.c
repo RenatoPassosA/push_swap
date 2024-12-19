@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
  
-s_list *lst_new(int n)
+s_list *lst_new(long n)
 {
     s_list *node;
 

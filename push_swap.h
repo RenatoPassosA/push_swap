@@ -21,8 +21,7 @@ typedef struct s_list
 	struct s_list	*next;
 }				s_list;
 
-s_list *lst_new(int n);
-void add_back(s_list **head, s_list *new);
+s_list *lst_new(long n);
 int    size(s_list **head);
 void set_index(s_list **head);
 void sa(s_list **a);
@@ -38,7 +37,7 @@ void    rrb(s_list **b);
 void    rrr(s_list **a, s_list **b);
 char	*ft_strjoin(const char *s1, const char *s2);
 int	check_char(char *str);
-int	ft_atol(char *s);
+long	ft_atol(char *s);
 size_t	ft_strlen(const char *str);
 s_list	*ft_splitlst(char *s, char c);
 void small_numbers(s_list **a, s_list **b);

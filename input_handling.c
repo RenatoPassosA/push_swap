@@ -31,25 +31,23 @@ int	check_char(char *str)
 
 int	check_doubles(s_list **a)
 {
-	s_list *atual;
-	s_list	*percorrer;
+	s_list *current;
+	s_list	*next;
 
-	atual = *a;
+	current = *a;
 	(*a) = (*a)->next;//verificação começa no segundo elemento
-	percorrer = *a;
+	next = *a;
 	while((*a))//verifica item por item da lista
 	{
-		while(percorrer)//usado para iterar da onde tá até o final da lista
+		while(next)//usado para iterar da onde tá até o final da lista
 		{
-			if (atual->content == percorrer->content)
+			if (current->content == next->content)
 				return(1);
-			printf("---CHEKC VALUES %ld---\n", atual->content);
-
-			percorrer = percorrer->next;
+			next = next->next;
 		}
-		atual = atual->next;//o que vai ser comparado vai pra frente
+		current = current->next;//o que vai ser comparado vai pra frente
 		(*a) = (*a)->next;//a lista de fora vai pra frente
-		percorrer = (*a);
+		next = (*a);
 	}
 	return(0);
 }

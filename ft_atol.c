@@ -13,7 +13,7 @@ size_t	ft_strlen(const char *str)
 	return (counter);
 }
 
-int	ft_atol(char *s)
+long	ft_atol(char *s)
 {
 	int			minus_sign;
 	long int	result;

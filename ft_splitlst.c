@@ -25,6 +25,23 @@ static char	*substr(char *s, int index, char c)
 	return (sub);
 }
 
+void	ft_lstclear(s_list **lst)
+{
+	s_list	*temp;
+	s_list	*current;
+
+	if (!lst)
+		return ;
+	current = *lst;
+	while (current)
+	{
+		temp = current->next;
+		free(current);
+		current = temp;
+	}
+	*lst = NULL;
+}
+
 s_list	*ft_splitlst(char *s, char c)
 {
 	s_list	*head;
@@ -42,6 +59,11 @@ s_list	*ft_splitlst(char *s, char c)
 		if (s[index] != c)
 		{
 			new_node = lst_new(ft_atol(substr((char *)s, index, c)));
+			if (new_node->content > 2147483647)
+			{
+				ft_lstclear(&head);
+				return (head);
+			}
 			if (!head) //salvar a referencia do primeiro nó da lista
 				head = new_node;
 			else

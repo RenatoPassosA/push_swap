@@ -54,11 +54,6 @@ void    radix(s_list **a, s_list **b)
     }
 }
 
-
-
-
-
-
 int main(int ac, char **av)
 {
     int index;
@@ -87,10 +82,15 @@ int main(int ac, char **av)
             return (0);
         }
         list_a = ft_splitlst(inputs, ' ');//criação da lista encadeada
+        if (!list_a)
+        {
+            printf("Error - (numero > INT_MAX)\n");
+            return (0);
+        }
         list_b = NULL;
         if (check_doubles(&list_a))
         {
-            printf("Error - (numero duplicado ou > INT_MAX)\n");
+            printf("Error - (numero duplicado)\n");
             return(0);
         }
         set_index(&list_a);//inicialização dos indices
@@ -112,5 +112,3 @@ int main(int ac, char **av)
 
 }
 
-/*ERRO COM NUMEROS NEGATIVOS COM MAIS DE 1 DIGITO - ALGUM ERRO RELACIONADO A ISSO;
-ERRO NO ALGORITMO DE 5 ELEMENTOS*/
