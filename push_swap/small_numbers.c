@@ -10,7 +10,7 @@ void small_numbers(s_list **a, s_list **b)
             ra(a);
     }
     else if (size(a) == 3)
-        three(a,b, 0);
+        three(a, 0);
     else if (size(a) == 4)
         four(a, b);
     else if (size(a) == 5)
@@ -19,32 +19,40 @@ void small_numbers(s_list **a, s_list **b)
         radix(a, b);
 }
 
-void three(s_list **a, s_list **b, int n)
+void three(s_list **a, int n)
 {
     int pos;
     s_list *current;
 
     pos = 0;
-    current = a;
+    current = *a;
     while(current->index != n)
     {
         pos++;
-        i
+        current = current->next;
     }
-    if (pos == 1 && !ordered)
+    if (pos == 0 && !ordered(a))
     {
-        sa(a, b);
+        sa(a);
         ra(a);
     }
     else if (pos == 1)
-        ra(a);
+    {
+        if ((*a)->index == 1)
+            sa(a);
+        else
+            ra(a);
+    }
     else if (pos == 2)
-
-            
-    pb(a, b);
-    if (!ordered(a))
-        ra(a);
-    pa(a, b);
+    {
+        if ((*a)->index == 1)
+            rra(a);
+        else
+        {
+            sa(a);
+            rra(a);
+        }
+    }
 }
 
 void    four(s_list **a, s_list **b)
@@ -52,7 +60,7 @@ void    four(s_list **a, s_list **b)
     while((*a)->index != 0)
         ra(a);
     pb(a, b);
-    three(a, b, 1);
+    three(a, 1);
     pa(a, b);
 }
 
@@ -79,7 +87,7 @@ void    five(s_list **a, s_list **b)
     }
     rotate_pos(a, pos);
     pb(a, b);
-    three(a,b, 2);
+    three(a, 2);
     pa(a, b);
     pa(a, b);
 }

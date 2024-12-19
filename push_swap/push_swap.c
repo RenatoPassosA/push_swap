@@ -88,20 +88,24 @@ int main(int ac, char **av)
         }
         list_a = ft_splitlst(inputs, ' ');//criação da lista encadeada
         list_b = NULL;
+        if (check_doubles(&list_a))
+        {
+            printf("Error - (numero duplicado ou > INT_MAX)\n");
+            return(0);
+        }
         set_index(&list_a);//inicialização dos indices
         small_numbers(&list_a, &list_b); //chamada dos algoritmos
-
     }
     
     
 
-   while(list_a)
+   /*while(list_a)
      {
         printf("C: %d\n", list_a->content);
         //printf("I: %d\n", list_a->index);
         list_a = list_a->next;
      }
-    printf("------------\n");
+    printf("------------\n");*/
    
 
     return (0);
