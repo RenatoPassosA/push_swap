@@ -16,6 +16,7 @@ void sa(s_list **a)
     new_first->next = temp;
     temp->next = hold;
     *a = new_first;
+    printf("sa\n");
 }
 
 void sb(s_list **b)
@@ -31,13 +32,15 @@ void sb(s_list **b)
     hold = new_first->next;
     new_first->next = temp;
     temp->next = hold;
-    *b = new_first; 
+    *b = new_first;
+    printf("sb\n");
 }
 
 void ss(s_list **a, s_list **b)
 {
     sa(a);
     sb(b);
+    printf("ss\n");
 }
 
 //PUSHS
@@ -52,6 +55,7 @@ void pa(s_list **a, s_list**b)
     *b = first_b->next;
     first_b->next = *a;
     *a = first_b;
+    printf("pa\n");
 }
 
 void pb(s_list **a, s_list**b) //pega primeiro elemento de a e coloca em b
@@ -64,6 +68,7 @@ void pb(s_list **a, s_list**b) //pega primeiro elemento de a e coloca em b
     *a = first_a->next;
     first_a->next = *b;
     *b = first_a;
+    printf("pb\n");
 }
 
 //ROTATES
@@ -82,6 +87,7 @@ void    ra(s_list **a)
     while (last->next)
         last = last->next;
     last->next = first; //após o ultimo adiciono o primeiro
+    printf("ra\n");
 }
 
 void    rb(s_list **b)
@@ -98,12 +104,14 @@ void    rb(s_list **b)
     while (last->next)
         last = last->next;
     last->next = first;
+    printf("rb\n");
 }
 
 void    rr(s_list **a, s_list **b)
 {
     ra(a);
     rb(b);
+    printf("rr\n");
 }
 
 //REVERSE ROTATES
@@ -129,6 +137,7 @@ void    rra(s_list **a)
     first->next = NULL;
     last->next = temp;
     *a = last;
+    printf("rra\n");
 }
 
 void    rrb(s_list **b)
@@ -152,10 +161,12 @@ void    rrb(s_list **b)
     first->next = NULL;
     last->next = temp;
     *b = last;
+    printf("rrb\n");
 }
 
 void    rrr(s_list **a, s_list **b)
 {
     rra(a);
     rrb(b);
+    printf("rrr\n");
 }

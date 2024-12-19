@@ -37,8 +37,15 @@ void    rra(s_list **a);
 void    rrb(s_list **b);
 void    rrr(s_list **a, s_list **b);
 char	*ft_strjoin(const char *s1, const char *s2);
-char	**ft_split(char const *s, char c);
-int	check_char(char **arr);
+int	check_char(char *str);
 int	ft_atol(char *s);
 size_t	ft_strlen(const char *str);
+s_list	*ft_splitlst(char *s, char c);
+void small_numbers(s_list **a, s_list **b);
+void three(s_list **a, s_list **b, int n);
+void    four(s_list **a, s_list **b);
+void    five(s_list **a, s_list **b);
+void rotate_pos(s_list **a, int pos);
+void    radix(s_list **a, s_list **b);
+int ordered(s_list **head);
 

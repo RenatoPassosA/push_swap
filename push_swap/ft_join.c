@@ -4,20 +4,15 @@
 static char	*concat(char *final, char *str, int index)
 {
 	int	strindex;
-	int i_final;
 
 	strindex = 0;
-	i_final = 0;
 	while (str[strindex] != '\0')
 	{
-		while(str[strindex] <= 32)
-			strindex++;
-		strindex--;
-		final[i_final] = str[strindex];
+		final[index] = str[strindex];
 		index++;
 		strindex++;
-		i_final++;
 	}
+	final[index] = ' ';
 	return (final);
 }
 
@@ -38,7 +33,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	index = ft_strlen(str);
 	str = concat(str, (char *)s2, index);
 	index = index + ft_strlen((char *)s2);
-	str[index] = ' ';
 	str[index++] = '\0';
 	return (str);
 }

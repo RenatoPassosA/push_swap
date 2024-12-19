@@ -62,14 +62,11 @@ void    radix(s_list **a, s_list **b)
 int main(int ac, char **av)
 {
     int index;
-    int nums;
     char *inputs;
-    char **arr;
     s_list *list_a;
     s_list *list_b;
 
-    index = 1;
-    nums = 1;
+    index = 2;
     if (ac == 1)
     {
         printf("Error - (nenhum argumento)\n");
@@ -77,43 +74,39 @@ int main(int ac, char **av)
     }
     else
     {
+        inputs = av[1];
         while (index < ac)
         {
-            inputs = ft_strjoin(inputs, av[index]);
+            inputs = ft_strjoin(inputs, av[index]); //ATÉ AQUI OK
             index++;
         }
-        arr = ft_split(inputs, ' ');
-        if (!check_char(arr))
-            printf("Error - (caracter como parametro)\n");
-        index = 0;
-        while (*arr[index] != '\0')
-            index++;
-        list_a =  lst_new(ft_atol(arr[0]));
-        while(nums <= index)
+        printf("------%s--------\n", inputs);
+        if (!check_char(inputs))//verificação de caracteres
         {
-            list_b = lst_new(ft_atol(arr[nums]));
-            add_back(&list_a, list_b);
-            nums++;
+            printf("Error - (caracter como parametro)\n");
+            return (0);
         }
+        list_a = ft_splitlst(inputs, ' ');//criação da lista encadeada
         list_b = NULL;
+        set_index(&list_a);//inicialização dos indices
+        small_numbers(&list_a, &list_b); //chamada dos algoritmos
+
     }
     
-    set_index(&list_a);
-    //radix(&list_a, &list_b);
+    
 
-   /*while(head1)
-    {
-        printf("I: %d\n", head1->index);
-        head1 = head1->next;
-    }
+   while(list_a)
+     {
+        printf("C: %d\n", list_a->content);
+        //printf("I: %d\n", list_a->index);
+        list_a = list_a->next;
+     }
     printf("------------\n");
-    while(head2)
-    {
-        printf("I: %d\n", head2->index);
-        head2 = head2->next;
-    }*/
+   
 
     return (0);
 
 }
 
+/*ERRO COM NUMEROS NEGATIVOS COM MAIS DE 1 DIGITO - ALGUM ERRO RELACIONADO A ISSO;
+ERRO NO ALGORITMO DE 5 ELEMENTOS*/

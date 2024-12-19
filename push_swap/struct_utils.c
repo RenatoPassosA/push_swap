@@ -25,23 +25,6 @@ s_list *lst_new(int n)
     return(node);
 }
 
-void add_back(s_list **head, s_list *new)
-{
-    s_list *current;
-
-    if (!head || new)
-        return ;
-    if (!*head)
-    {
-        *head = new;
-        new->next = NULL;
-        return ;
-    }
-    current = *head;
-    while (current->next)
-        current = current->next;
-    current->next = new;
-}
 
 int    size(s_list **head)
 {
