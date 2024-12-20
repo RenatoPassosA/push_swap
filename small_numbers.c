@@ -19,12 +19,12 @@ void small_numbers(s_list **a, s_list **b)
         radix(a, b);
 }
 
-void three(s_list **a, int n)
+void three(s_list **a, int n) //n é o index pra achar --- 3 2 4
 {
     int pos;
     s_list *current;
 
-    pos = 0;
+    pos = 1;
     current = *a;
     while(current->index != n)
     {
@@ -36,26 +36,32 @@ void three(s_list **a, int n)
         sa(a);
         ra(a);
     }
-    else if (pos == 1)
+    else if (pos == 1 && !ordered(a))
     {
-        if ((*a)->index == 1)
+        sa(a);
+        ra(a);
+    }
+    else if (pos == 2) //VERIFICAR SE DA PRA FAZER ESSA PARTE DO CODIGO FUNCIONAR SEM SETAR O IF COM INDEX DE VALOR FIXO
+    {
+        if ((*a)->index == 2)
             sa(a);
         else
             ra(a);
     }
-    else if (pos == 2)
+    else if (pos == 3)
     {
-        if ((*a)->index == 1)
+        if ((*a)->index == 2)
             rra(a);
         else
         {
             sa(a);
             rra(a);
-        }
+            }
     }
 }
 
-void    four(s_list **a, s_list **b)
+
+void    four(s_list **a, s_list **b) 
 {
     while((*a)->index != 0)
         ra(a);
@@ -64,7 +70,7 @@ void    four(s_list **a, s_list **b)
     pa(a, b);
 }
 
-void    five(s_list **a, s_list **b)
+void    five(s_list **a, s_list **b)// erro com 2 1 4 3 5
 {   
     int pos;
     s_list *current;

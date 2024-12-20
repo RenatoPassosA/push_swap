@@ -30,7 +30,7 @@ void    radix(s_list **a, s_list **b)
     int max_bits;
     int bit;
     int save_index;
-  
+
     max_bits = get_num_bites(size(a) - 1);
     bit = 0;
     while (bit < max_bits)
@@ -64,7 +64,7 @@ int main(int ac, char **av)
     index = 2;
     if (ac == 1)
     {
-        printf("Error - (nenhum argumento)\n");
+        printf("Error\n");
         return (0);
     }
     else
@@ -75,27 +75,35 @@ int main(int ac, char **av)
             inputs = ft_strjoin(inputs, av[index]); //ATÉ AQUI OK
             index++;
         }
-        printf("------%s--------\n", inputs);
         if (!check_char(inputs))//verificação de caracteres
         {
-            printf("Error - (caracter como parametro)\n");
+            printf("Error\n");
             return (0);
         }
         list_a = ft_splitlst(inputs, ' ');//criação da lista encadeada
         if (!list_a)
         {
-            printf("Error - (numero > INT_MAX)\n");
+            printf("Error\n");
             return (0);
         }
         list_b = NULL;
         if (check_doubles(&list_a))
         {
-            printf("Error - (numero duplicado)\n");
+            printf("Error\n");
             return(0);
         }
         set_index(&list_a);//inicialização dos indices
-        small_numbers(&list_a, &list_b); //chamada dos algoritmos
+        if (size(&list_a) < 6)
+            small_numbers(&list_a, &list_b); //chamada dos algoritmos
+        else
+            radix(&list_a, &list_b);
     }
+
+    while(list_a)
+        {
+            printf("%ld\n",list_a->content);
+            list_a = list_a->next;
+        }
     
     
 

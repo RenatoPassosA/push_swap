@@ -16,7 +16,8 @@ void sa(s_list **a)
     new_first->next = temp;
     temp->next = hold;
     *a = new_first;
-    printf("sa\n");
+    printf("sa");
+    printf("\n");
 }
 
 void sb(s_list **b)
@@ -33,14 +34,16 @@ void sb(s_list **b)
     new_first->next = temp;
     temp->next = hold;
     *b = new_first;
-    printf("sb\n");
+    printf("sb");
+    printf("\n");
 }
 
 void ss(s_list **a, s_list **b)
 {
     sa(a);
     sb(b);
-    printf("ss\n");
+    printf("ss");
+    printf("\n");
 }
 
 //PUSHS
@@ -55,7 +58,8 @@ void pa(s_list **a, s_list**b)
     *b = first_b->next;
     first_b->next = *a;
     *a = first_b;
-    printf("pa\n");
+    printf("pa");
+    printf("\n");
 }
 
 void pb(s_list **a, s_list**b) //pega primeiro elemento de a e coloca em b
@@ -68,7 +72,8 @@ void pb(s_list **a, s_list**b) //pega primeiro elemento de a e coloca em b
     *a = first_a->next;
     first_a->next = *b;
     *b = first_a;
-    printf("pb\n");
+    printf("pb");
+    printf("\n");
 }
 
 //ROTATES
@@ -87,7 +92,8 @@ void    ra(s_list **a)
     while (last->next)
         last = last->next;
     last->next = first; //após o ultimo adiciono o primeiro
-    printf("ra\n");
+    printf("ra");
+    printf("\n");
 }
 
 void    rb(s_list **b)
@@ -104,14 +110,16 @@ void    rb(s_list **b)
     while (last->next)
         last = last->next;
     last->next = first;
-    printf("rb\n");
+    printf("rb");
+    printf("\n");
 }
 
 void    rr(s_list **a, s_list **b)
 {
     ra(a);
     rb(b);
-    printf("rr\n");
+    printf("rr");
+    printf("\n");
 }
 
 //REVERSE ROTATES
@@ -137,7 +145,8 @@ void    rra(s_list **a)
     first->next = NULL;
     last->next = temp;
     *a = last;
-    printf("rra\n");
+    printf("rra");
+    printf("\n");
 }
 
 void    rrb(s_list **b)
@@ -161,12 +170,14 @@ void    rrb(s_list **b)
     first->next = NULL;
     last->next = temp;
     *b = last;
-    printf("rrb\n");
+    printf("rrb");
+    printf("\n");
 }
 
 void    rrr(s_list **a, s_list **b)
 {
     rra(a);
     rrb(b);
-    printf("rrr\n");
+    printf("rrr");
+    printf("\n");
 }

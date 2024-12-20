@@ -33,11 +33,12 @@ int	check_doubles(s_list **a)
 {
 	s_list *current;
 	s_list	*next;
+	s_list	*values;
 
 	current = *a;
-	(*a) = (*a)->next;//verificação começa no segundo elemento
-	next = *a;
-	while((*a))//verifica item por item da lista
+	values = (*a)->next;//verificação começa no segundo elemento
+	next = values;
+	while(values)//verifica item por item da lista
 	{
 		while(next)//usado para iterar da onde tá até o final da lista
 		{
@@ -46,8 +47,8 @@ int	check_doubles(s_list **a)
 			next = next->next;
 		}
 		current = current->next;//o que vai ser comparado vai pra frente
-		(*a) = (*a)->next;//a lista de fora vai pra frente
-		next = (*a);
+		values = values->next;//a lista de fora vai pra frente
+		next = values;
 	}
 	return(0);
 }
