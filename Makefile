@@ -1,7 +1,7 @@
 NAME = push_swap
 CC = cc
 CCFLAGS = -Wall -Wextra -Werror -g
-SRC = push_swap.o small_numbers.o ft_atol.o ft_join.o ft_splitlst.o input_handling.o moves.o struct_utils.o
+SRC = push_swap.o small_numbers.o input_handling.o moves.o moves2.o moves3.o utils1.o utils2.o utils3.o
 
 all: $(NAME)
 

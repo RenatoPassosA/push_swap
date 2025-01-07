@@ -1,7 +1,5 @@
 #include "push_swap.h"
 
-//SWAPS
-
 void sa(s_list **a)
 {
     s_list *new_first;
@@ -16,8 +14,8 @@ void sa(s_list **a)
     new_first->next = temp;
     temp->next = hold;
     *a = new_first;
-    printf("sa");
-    printf("\n");
+    putstr("sa");
+    putstr("\n");
 }
 
 void sb(s_list **b)
@@ -34,19 +32,17 @@ void sb(s_list **b)
     new_first->next = temp;
     temp->next = hold;
     *b = new_first;
-    printf("sb");
-    printf("\n");
+    putstr("sb");
+    putstr("\n");
 }
 
 void ss(s_list **a, s_list **b)
 {
     sa(a);
     sb(b);
-    printf("ss");
-    printf("\n");
+    putstr("ss");
+    putstr("\n");
 }
-
-//PUSHS
 
 void pa(s_list **a, s_list**b)
 {
@@ -58,11 +54,11 @@ void pa(s_list **a, s_list**b)
     *b = first_b->next;
     first_b->next = *a;
     *a = first_b;
-    printf("pa");
-    printf("\n");
+    putstr("pa");
+    putstr("\n");
 }
 
-void pb(s_list **a, s_list**b) //pega primeiro elemento de a e coloca em b
+void pb(s_list **a, s_list**b)
 {
     if (!(*a))
         return ;
@@ -72,112 +68,6 @@ void pb(s_list **a, s_list**b) //pega primeiro elemento de a e coloca em b
     *a = first_a->next;
     first_a->next = *b;
     *b = first_a;
-    printf("pb");
-    printf("\n");
-}
-
-//ROTATES
-
-void    ra(s_list **a)
-{
-    s_list  *first;
-    s_list  *last;
-    
-    if (size(a) < 2)
-        return ;
-    first = *a;
-    *a = first->next; //o primeiro nó da lista vira o segundo
-    first->next = NULL;
-    last = *a;
-    while (last->next)
-        last = last->next;
-    last->next = first; //após o ultimo adiciono o primeiro
-    printf("ra");
-    printf("\n");
-}
-
-void    rb(s_list **b)
-{
-    s_list  *first;
-    s_list  *last;
-    
-    if (size(b) < 2)
-        return ;
-    first = *b;
-    *b = first->next;
-    first->next = NULL;
-    last = *b;
-    while (last->next)
-        last = last->next;
-    last->next = first;
-    printf("rb");
-    printf("\n");
-}
-
-void    rr(s_list **a, s_list **b)
-{
-    ra(a);
-    rb(b);
-    printf("rr");
-    printf("\n");
-}
-
-//REVERSE ROTATES
-
-void    rra(s_list **a)
-{
-    s_list  *first;
-    s_list  *last;
-    s_list  *temp;
- 
-    first = *a;
-    temp = *a;
-    while(first->next)
-    {
-        if (!first->next->next)
-            break;
-        first = first->next;
-    }//pegou o penultimo
-    
-    last = *a;
-    while(last->next)
-        last = last->next;//pegou o ultimo
-    first->next = NULL;
-    last->next = temp;
-    *a = last;
-    printf("rra");
-    printf("\n");
-}
-
-void    rrb(s_list **b)
-{
-    s_list  *first;
-    s_list  *last;
-    s_list  *temp;
- 
-    first = *b;
-    temp = *b;
-    while(first->next)
-    {
-        if (!first->next->next)
-            break;
-        first = first->next;
-    }//pegou o penultimo
-    
-    last = *b;
-    while(last->next)
-        last = last->next;//pegou o ultimo
-    first->next = NULL;
-    last->next = temp;
-    *b = last;
-    printf("rrb");
-    printf("\n");
-}
-
-void    rrr(s_list **a, s_list **b)
-{
-    rra(a);
-    rrb(b);
-    printf("rrr");
-    printf("\n");
+    putstr("pb");
+    putstr("\n");
 }

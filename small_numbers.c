@@ -15,52 +15,53 @@ void small_numbers(s_list **a, s_list **b)
         four(a, b);
     else if (size(a) == 5)
         five(a, b);
-    else
-        radix(a, b);
 }
 
-void three(s_list **a, int n) //n é o index pra achar --- 3 2 4
+void moves_tree(s_list **a, int  pos, int n)
+{
+    if (pos == 0 && !ordered(a))
+        {
+            sa(a);
+            ra(a);
+        }
+        else if (pos == 1)
+        {
+            sa(a);
+            if (!ordered(a))
+            {
+                sa(a);
+                ra(a);
+            }
+        }
+        else if (pos == 2)
+        {
+            if ((*a)->index == n + 1)
+                rra(a);
+            else
+            {
+                sa(a);
+                rra(a);
+            }
+        }
+}
+
+
+
+void three(s_list **a, int n)
 {
     int pos;
     s_list *current;
 
-    pos = 1;
+    pos = 0;
     current = *a;
     while(current->index != n)
     {
         pos++;
         current = current->next;
     }
-    if (pos == 0 && !ordered(a))
-    {
-        sa(a);
-        ra(a);
-    }
-    else if (pos == 1 && !ordered(a))
-    {
-        sa(a);
-        ra(a);
-    }
-    else if (pos == 2) //VERIFICAR SE DA PRA FAZER ESSA PARTE DO CODIGO FUNCIONAR SEM SETAR O IF COM INDEX DE VALOR FIXO
-    {
-        if ((*a)->index == 2)
-            sa(a);
-        else
-            ra(a);
-    }
-    else if (pos == 3)
-    {
-        if ((*a)->index == 2)
-            rra(a);
-        else
-        {
-            sa(a);
-            rra(a);
-            }
-    }
+    moves_tree(a, pos, n);        
 }
-
-
+  
 void    four(s_list **a, s_list **b) 
 {
     while((*a)->index != 0)
@@ -70,7 +71,7 @@ void    four(s_list **a, s_list **b)
     pa(a, b);
 }
 
-void    five(s_list **a, s_list **b)// erro com 2 1 4 3 5
+void    five(s_list **a, s_list **b)
 {   
     int pos;
     s_list *current;
@@ -96,47 +97,4 @@ void    five(s_list **a, s_list **b)// erro com 2 1 4 3 5
     three(a, 2);
     pa(a, b);
     pa(a, b);
-}
-
-void rotate_pos(s_list **a, int pos)
-{
-    int range;
-
-    if (size(a) == 4)
-        range = 3;
-    else if (size(a) == 5)
-        range = 4;
-    if (pos == 0)
-        return ;
-    if (pos <= 2)
-    {
-        while(pos > 0)
-        {
-            ra(a);
-            pos--;
-        }
-    }
-    else
-    {
-        while(pos <= range)
-        {
-            rra(a);
-            pos++;
-        }
-    }
-}
-
-int ordered(s_list **head)
-{
-    s_list *current;
-    
-    current = *head;
-    while (current && current->next)
-    {
-        if (current->content < current->next->content)
-            current = current->next;
-        else
-            return(0);   
-    }
-    return(1);
 }

@@ -25,7 +25,6 @@ s_list *lst_new(long n)
     return(node);
 }
 
-
 int    size(s_list **head)
 {
     int count = 1;
@@ -69,4 +68,47 @@ void set_index(s_list **head)
         ptr = NULL;
         i++;
     }
+}
+
+void rotate_pos(s_list **a, int pos)
+{
+    int range;
+
+    if (size(a) == 4)
+        range = 3;
+    else if (size(a) == 5)
+        range = 4;
+    if (pos == 0)
+        return ;
+    if (pos <= 2)
+    {
+        while(pos > 0)
+        {
+            ra(a);
+            pos--;
+        }
+    }
+    else
+    {
+        while(pos <= range)
+        {
+            rra(a);
+            pos++;
+        }
+    }
+}
+
+int ordered(s_list **head)
+{
+    s_list *current;
+    
+    current = *head;
+    while (current && current->next)
+    {
+        if (current->content < current->next->content)
+            current = current->next;
+        else
+            return(0);   
+    }
+    return(1);
 }

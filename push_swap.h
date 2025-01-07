@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
+#include <unistd.h>
 
 typedef struct s_list
 {
@@ -39,7 +40,7 @@ char	*ft_strjoin(const char *s1, const char *s2);
 int	check_char(char *str);
 long	ft_atol(char *s);
 size_t	ft_strlen(const char *str);
-s_list	*ft_splitlst(char *s, char c);
+s_list	*ft_splitlst(char *s, char c, int index);
 void small_numbers(s_list **a, s_list **b);
 void three(s_list **a, int n);
 void    four(s_list **a, s_list **b);
@@ -48,4 +49,5 @@ void rotate_pos(s_list **a, int pos);
 void    radix(s_list **a, s_list **b);
 int ordered(s_list **head);
 int	check_doubles(s_list **a);
+void    putstr(char *str);
 

@@ -40,7 +40,7 @@ void    radix(s_list **a, s_list **b)
         {
             if ((((*a)->index >> bit)& 1) == 0)
                 pb(a, b);
-            else if (save_index == -1) //guardo o index do primeiro elemento da rotação para ter uma condição de parada
+            else if (save_index == -1)
             {
                 save_index = (*a)->index;
                 ra(a);
@@ -54,69 +54,47 @@ void    radix(s_list **a, s_list **b)
     }
 }
 
+
+int check_errors()
+{
+
+
+
+    
+}
+
 int main(int ac, char **av)
 {
     int index;
+    int splitindex;
     char *inputs;
     s_list *list_a;
     s_list *list_b;
 
+    list_b = NULL;
+    splitindex = -1;
     index = 2;
     if (ac == 1)
     {
-        printf("Error\n");
+        putstr("Error\n");
         return (0);
     }
     else
     {
         inputs = av[1];
-        while (index < ac)
-        {
-            inputs = ft_strjoin(inputs, av[index]); //ATÉ AQUI OK
-            index++;
-        }
-        if (!check_char(inputs))//verificação de caracteres
-        {
-            printf("Error\n");
+        set_index(&list_a);
+        if (ordered(&list_a))
             return (0);
-        }
-        list_a = ft_splitlst(inputs, ' ');//criação da lista encadeada
-        if (!list_a)
-        {
-            printf("Error\n");
-            return (0);
-        }
-        list_b = NULL;
-        if (check_doubles(&list_a))
-        {
-            printf("Error\n");
-            return(0);
-        }
-        set_index(&list_a);//inicialização dos indices
         if (size(&list_a) < 6)
-            small_numbers(&list_a, &list_b); //chamada dos algoritmos
+            small_numbers(&list_a, &list_b);
         else
             radix(&list_a, &list_b);
     }
+    return (0);
+}
 
-    while(list_a)
+    /*while(list_a)
         {
             printf("%ld\n",list_a->content);
             list_a = list_a->next;
-        }
-    
-    
-
-   /*while(list_a)
-     {
-        printf("C: %d\n", list_a->content);
-        //printf("I: %d\n", list_a->index);
-        list_a = list_a->next;
-     }
-    printf("------------\n");*/
-   
-
-    return (0);
-
-}
-
+        }*/
