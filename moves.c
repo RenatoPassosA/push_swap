@@ -1,73 +1,85 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpassos- <rpassos-@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/08 13:25:25 by rpassos-          #+#    #+#             */
+/*   Updated: 2025/01/08 13:25:27 by rpassos-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void sa(s_list **a)
+void	sa(t_list **a)
 {
-    s_list *new_first;
-    s_list *temp;
-    s_list  *hold;
+	t_list	*new_first;
+	t_list	*temp;
+	t_list	*hold;
 
-    if (size(a) <= 1)
-        return;
-    temp = *a;
-    new_first = temp->next;
-    hold = new_first->next;
-    new_first->next = temp;
-    temp->next = hold;
-    *a = new_first;
-    putstr("sa");
-    putstr("\n");
+	if (size(a) <= 1)
+		return ;
+	temp = *a;
+	new_first = temp->next;
+	hold = new_first->next;
+	new_first->next = temp;
+	temp->next = hold;
+	*a = new_first;
+	putstr("sa", 1);
+	putstr("\n", 1);
 }
 
-void sb(s_list **b)
+void	sb(t_list **b)
 {
-    s_list *new_first;
-    s_list *temp;
-    s_list  *hold;
+	t_list	*new_first;
+	t_list	*temp;
+	t_list	*hold;
 
-    if (size(b) <= 1)
-        return;
-    temp = *b;
-    new_first = temp->next;
-    hold = new_first->next;
-    new_first->next = temp;
-    temp->next = hold;
-    *b = new_first;
-    putstr("sb");
-    putstr("\n");
+	if (size(b) <= 1)
+		return ;
+	temp = *b;
+	new_first = temp->next;
+	hold = new_first->next;
+	new_first->next = temp;
+	temp->next = hold;
+	*b = new_first;
+	putstr("sb", 1);
+	putstr("\n", 1);
 }
 
-void ss(s_list **a, s_list **b)
+void	ss(t_list **a, t_list **b)
 {
-    sa(a);
-    sb(b);
-    putstr("ss");
-    putstr("\n");
+	sa(a);
+	sb(b);
+	putstr("ss", 1);
+	putstr("\n", 1);
 }
 
-void pa(s_list **a, s_list**b)
+void	pa(t_list **a, t_list **b)
 {
-    if (!(*b))
-        return ;
-    s_list *first_b;
+	t_list	*first_b;
 
-    first_b = *b;
-    *b = first_b->next;
-    first_b->next = *a;
-    *a = first_b;
-    putstr("pa");
-    putstr("\n");
+	if (!(*b))
+		return ;
+	first_b = *b;
+	*b = first_b->next;
+	first_b->next = *a;
+	*a = first_b;
+	putstr("pa", 1);
+	putstr("\n", 1);
 }
 
-void pb(s_list **a, s_list**b)
+void	pb(t_list **a, t_list **b)
 {
-    if (!(*a))
-        return ;
-    s_list *first_a;
+	t_list	*first_a;
 
-    first_a = *a;
-    *a = first_a->next;
-    first_a->next = *b;
-    *b = first_a;
-    putstr("pb");
-    putstr("\n");
+	if (!(*a))
+		return ;
+	first_a = *a;
+	*a = first_a->next;
+	first_a->next = *b;
+	*b = first_a;
+	putstr("pb", 1);
+	putstr("\n", 1);
 }

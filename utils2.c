@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpassos- <rpassos-@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/08 13:25:01 by rpassos-          #+#    #+#             */
+/*   Updated: 2025/01/08 13:25:03 by rpassos-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -25,10 +36,10 @@ static char	*substr(char *s, int index, char c)
 	return (sub);
 }
 
-s_list	*ft_lstclear(s_list **lst)
+t_list	*ft_lstclear(t_list **lst)
 {
-	s_list	*temp;
-	s_list	*current;
+	t_list	*temp;
+	t_list	*current;
 
 	if (!lst)
 		return (NULL);
@@ -43,12 +54,12 @@ s_list	*ft_lstclear(s_list **lst)
 	return (*lst);
 }
 
-s_list	*ft_splitlst(char *s, char c, int index)
+t_list	*ft_splitlst(char *s, char c, int index)
 {
-	s_list	*head;
-	s_list	*current;
-	s_list	*new_node;
-	
+	t_list	*head;
+	t_list	*current;
+	t_list	*new_node;
+
 	head = NULL;
 	current = NULL;
 	while (s[++index] != '\0')

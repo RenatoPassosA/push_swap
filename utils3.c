@@ -1,114 +1,115 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_utils.c                                     :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpassos- <rpassos-@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 19:45:50 by rpassos-          #+#    #+#             */
-/*   Updated: 2024/12/13 19:45:52 by rpassos-         ###   ########.fr       */
+/*   Updated: 2025/01/08 13:25:20 by rpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
- 
-s_list *lst_new(long n)
-{
-    s_list *node;
 
-    node = (s_list *)malloc(sizeof(s_list));
-    if (!node)
-        return(NULL);
-    node->content = n;
-    node->index = -1;
-    node->next = NULL;
-    return(node);
+t_list	*lst_new(long n)
+{
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->content = n;
+	node->index = -1;
+	node->next = NULL;
+	return (node);
 }
 
-int    size(s_list **head)
+int	size(t_list **head)
 {
-    int count = 1;
-    s_list *nodes;
+	int		count;
+	t_list	*nodes;
 
-    nodes = *head;
-    
-    if (!nodes)
-        return (0);
-    while(nodes->next)
-    {
-        count++;
-        nodes = nodes->next;
-    }
-    return (count);
+	count = 1;
+	nodes = *head;
+	if (!nodes)
+		return (0);
+	while (nodes->next)
+	{
+		count++;
+		nodes = nodes->next;
+	}
+	return (count);
 }
 
-void set_index(s_list **head)
+void	set_index(t_list **head)
 {
-    s_list  *current;
-    s_list *ptr;
-    int i = 0;
-    int min;
-    
-    while (i < size(head))
-    {
-        current = *head;
-        min = INT_MAX;
-        while(current)
-        {
-            if (current->content < min && current->index == -1)
-            {
-                min = current->content;
-                ptr = current;
-            }
-            current = current->next;
-        }
-        if (ptr == NULL)
-            return ;
-        ptr->index = i;
-        ptr = NULL;
-        i++;
-    }
+	t_list	*current;
+	t_list	*ptr;
+	int		i;
+	int		min;
+
+	i = 0;
+	while (i < size(head))
+	{
+		current = *head;
+		min = INT_MAX;
+		while (current)
+		{
+			if (current->content < min && current->index == -1)
+			{
+				min = current->content;
+				ptr = current;
+			}
+			current = current->next;
+		}
+		if (ptr == NULL)
+			return ;
+		ptr->index = i;
+		ptr = NULL;
+		i++;
+	}
 }
 
-void rotate_pos(s_list **a, int pos)
+void	rotate_pos(t_list **a, int pos)
 {
-    int range;
+	int	range;
 
-    if (size(a) == 4)
-        range = 3;
-    else if (size(a) == 5)
-        range = 4;
-    if (pos == 0)
-        return ;
-    if (pos <= 2)
-    {
-        while(pos > 0)
-        {
-            ra(a);
-            pos--;
-        }
-    }
-    else
-    {
-        while(pos <= range)
-        {
-            rra(a);
-            pos++;
-        }
-    }
+	if (size(a) == 4)
+		range = 3;
+	else if (size(a) == 5)
+		range = 4;
+	if (pos == 0)
+		return ;
+	if (pos <= 2)
+	{
+		while (pos > 0)
+		{
+			ra(a);
+			pos--;
+		}
+	}
+	else
+	{
+		while (pos <= range)
+		{
+			rra(a);
+			pos++;
+		}
+	}
 }
 
-int ordered(s_list **head)
+int	ordered(t_list **head)
 {
-    s_list *current;
-    
-    current = *head;
-    while (current && current->next)
-    {
-        if (current->content < current->next->content)
-            current = current->next;
-        else
-            return(0);   
-    }
-    return(1);
+	t_list	*current;
+
+	current = *head;
+	while (current && current->next)
+	{
+		if (current->content < current->next->content)
+			current = current->next;
+		else
+			return (0);
+	}
+	return (1);
 }
