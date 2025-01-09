@@ -16,15 +16,13 @@ void	sa(t_list **a)
 {
 	t_list	*new_first;
 	t_list	*temp;
-	t_list	*hold;
 
 	if (size(a) <= 1)
 		return ;
 	temp = *a;
 	new_first = temp->next;
-	hold = new_first->next;
+	temp->next = new_first->next;
 	new_first->next = temp;
-	temp->next = hold;
 	*a = new_first;
 	putstr("sa", 1);
 	putstr("\n", 1);
@@ -34,17 +32,15 @@ void	sb(t_list **b)
 {
 	t_list	*new_first;
 	t_list	*temp;
-	t_list	*hold;
 
 	if (size(b) <= 1)
 		return ;
 	temp = *b;
 	new_first = temp->next;
-	hold = new_first->next;
+	temp->next = new_first->next;
 	new_first->next = temp;
-	temp->next = hold;
 	*b = new_first;
-	putstr("sb", 1);
+	putstr("sa", 1);
 	putstr("\n", 1);
 }
 

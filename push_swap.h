@@ -39,19 +39,17 @@ void				rr(t_list **a, t_list **b);
 void				rra(t_list **a);
 void				rrb(t_list **b);
 void				rrr(t_list **a, t_list **b);
-char				*ft_strjoin(const char *s1, const char *s2);
+char				*ft_strjoin(char *s1, char *s2);
 int					check_char(char *str);
 long				ft_atol(char *s);
 size_t				ft_strlen(const char *str);
 t_list				*ft_splitlst(char *s, char c, int index);
 void				small_numbers(t_list **a, t_list **b);
-void				three(t_list **a, int n);
-void				four(t_list **a, t_list **b);
-void				five(t_list **a, t_list **b);
 void				rotate_pos(t_list **a, int pos);
-void				radix(t_list **a, t_list **b);
 int					ordered(t_list **head);
 int					check_doubles(t_list **a);
 void				putstr(char *str, int fd);
+void				*ft_calloc(size_t nmemb, size_t size);
+t_list				*ft_lstclear(t_list **lst);
 
 #endif

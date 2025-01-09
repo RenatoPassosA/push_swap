@@ -50,8 +50,19 @@ t_list	*ft_lstclear(t_list **lst)
 		free(current);
 		current = temp;
 	}
+	free(current);
 	*lst = NULL;
 	return (*lst);
+}
+
+static t_list	*get_sub(t_list *new_node, char *s, int index, char c)
+{
+	char	*sub;
+
+	sub = substr((char *)s, index, c);
+	new_node = lst_new(ft_atol(sub));
+	free(sub);
+	return (new_node);
 }
 
 t_list	*ft_splitlst(char *s, char c, int index)
@@ -66,7 +77,7 @@ t_list	*ft_splitlst(char *s, char c, int index)
 	{
 		if (s[index] != c)
 		{
-			new_node = lst_new(ft_atol(substr((char *)s, index, c)));
+			new_node = get_sub(new_node, s, index, c);
 			if (new_node->content < INT_MIN || new_node->content > INT_MAX)
 				return (ft_lstclear(&head));
 			if (!head)

@@ -51,38 +51,62 @@ long	ft_atol(char *s)
 	return (0);
 }
 
-static char	*concat(char *final, char *str, int index)
-{
-	int	strindex;
-
-	strindex = 0;
-	while (str[strindex] != '\0')
-	{
-		final[index] = str[strindex];
-		index++;
-		strindex++;
-	}
-	final[index] = ' ';
-	return (final);
-}
-
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		size;
 	int		index;
+	int		j;
 	char	*str;
 
 	if (!s1 && !s2)
 		return (NULL);
 	index = 0;
-	size = ft_strlen((char *)s1) + ft_strlen((char *)s2);
-	str = (char *)malloc(size * sizeof(char) + 1);
+	size = ft_strlen(s1) + ft_strlen(s2);
+	str = (char *)ft_calloc(size, sizeof(char) + 1);
 	if (!str)
 		return (NULL);
-	str = concat(str, (char *)s1, index);
-	index = ft_strlen(str);
-	str = concat(str, (char *)s2, index);
-	index = index + ft_strlen((char *)s2);
-	str[index++] = '\0';
+	while (s1[index])
+	{
+		str[index] = s1[index];
+		index++;
+	}
+	str[index] = ' ';
+	j = 0;
+	index++;
+	while (s2[j])
+		str[index++] = s2[j++];
+	str[index] = '\0';
 	return (str);
+}
+
+static void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	a;
+	unsigned char	*ptr;
+	size_t			index;
+
+	index = 0;
+	a = (unsigned char)c;
+	ptr = (unsigned char *)s;
+	while (index < n)
+	{
+		ptr[index] = a;
+		index++;
+	}
+	return (s);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*arr;
+
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	if ((nmemb * size) % nmemb)
+		return (NULL);
+	arr = (void *)malloc(nmemb * size);
+	if (arr == NULL)
+		return (NULL);
+	ft_memset(arr, 0, nmemb * size);
+	return (arr);
 }

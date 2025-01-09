@@ -12,24 +12,7 @@
 
 #include "push_swap.h"
 
-void	small_numbers(t_list **a, t_list **b)
-{
-	if (ordered(a))
-		return ;
-	if (size(a) == 2)
-	{
-		if (!ordered(a))
-			ra(a);
-	}
-	else if (size(a) == 3)
-		three(a, 0);
-	else if (size(a) == 4)
-		four(a, b);
-	else if (size(a) == 5)
-		five(a, b);
-}
-
-void	moves_tree(t_list **a, int pos, int n)
+static void	moves_tree(t_list **a, int pos, int n)
 {
 	if (pos == 0 && !ordered(a))
 	{
@@ -57,7 +40,7 @@ void	moves_tree(t_list **a, int pos, int n)
 	}
 }
 
-void	three(t_list **a, int n)
+static void	three(t_list **a, int n)
 {
 	int		pos;
 	t_list	*current;
@@ -72,7 +55,7 @@ void	three(t_list **a, int n)
 	moves_tree(a, pos, n);
 }
 
-void	four(t_list **a, t_list **b)
+static void	four(t_list **a, t_list **b)
 {
 	while ((*a)->index != 0)
 		ra(a);
@@ -81,7 +64,7 @@ void	four(t_list **a, t_list **b)
 	pa(a, b);
 }
 
-void	five(t_list **a, t_list **b)
+static void	five(t_list **a, t_list **b)
 {
 	int		pos;
 	t_list	*current;
@@ -107,4 +90,21 @@ void	five(t_list **a, t_list **b)
 	three(a, 2);
 	pa(a, b);
 	pa(a, b);
+}
+
+void	small_numbers(t_list **a, t_list **b)
+{
+	if (ordered(a))
+		return ;
+	if (size(a) == 2)
+	{
+		if (!ordered(a))
+			ra(a);
+	}
+	else if (size(a) == 3)
+		three(a, 0);
+	else if (size(a) == 4)
+		four(a, b);
+	else if (size(a) == 5)
+		five(a, b);
 }
