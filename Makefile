@@ -1,5 +1,5 @@
 NAME = push_swap
-CC = gcc
+CC = cc
 CCFLAGS = -Wall -Wextra -Werror
 SRC = push_swap.o small_numbers.o input_handling.o moves.o moves2.o moves3.o utils1.o utils2.o utils3.o
 
@@ -12,7 +12,7 @@ $(NAME): $(SRC)
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 compile:
-	gcc -Wall -Wextra -Werror -g -o push_swap *.c 
+	cc -Wall -Wextra -Werror -g -o push_swap *.c 
 
 clean:
 	rm -f $(SRC)

@@ -78,13 +78,13 @@ t_list	*ft_splitlst(char *s, char c, int index)
 		if (s[index] != c)
 		{
 			new_node = get_sub(new_node, s, index, c);
-			if (new_node->content < INT_MIN || new_node->content > INT_MAX)
-				return (ft_lstclear(&head));
 			if (!head)
 				head = new_node;
 			else
 				current->next = new_node;
 			current = new_node;
+			if (new_node->content < INT_MIN || new_node->content > INT_MAX)
+				return (ft_lstclear(&head));
 			while (!(s[index] == c || s[index] == '\0'))
 				index++;
 		}

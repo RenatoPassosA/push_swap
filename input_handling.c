@@ -66,14 +66,14 @@ int	check_doubles(t_list **a)
 	return (0);
 }
 
-void	putstr(char *str, int fd)
+void	putstr(char *str)
 {
 	int	index;
 
 	index = 0;
 	while (str[index] != '\0')
 	{
-		write(fd, &str[index], 1);
+		write(1, &str[index], 1);
 		index++;
 	}
 }

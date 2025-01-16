@@ -61,13 +61,17 @@ static int	check_error_call_algorithym(char *inputs, t_list *list_a,
 {
 	if (!list_a || check_doubles(&list_a) || !check_char(inputs))
 	{
-		putstr("Error", 2);
-		putstr("\n", 1);
+		putstr("Error");
+		putstr("\n");
+		ft_lstclear(&list_a);
 		return (0);
 	}
 	set_index(&list_a);
 	if (ordered(&list_a))
+	{
+		ft_lstclear(&list_a);
 		return (0);
+	}
 	if (size(&list_a) < 6)
 		small_numbers(&list_a, &list_b);
 	else
@@ -101,15 +105,17 @@ int	main(int ac, char **av)
 
 	list_b = NULL;
 	splitindex = -1;
-	if (ac <= 2)
-		putstr("Error\n", 2);
+	if (ac < 2)
+		putstr("Error\n");
 	else
 	{
 		inputs = av[1];
 		inputs = call_join(inputs, av, ac);
 		list_a = ft_splitlst(inputs, ' ', splitindex);
 		check_error_call_algorithym(inputs, list_a, list_b);
-		free(inputs);
+		if (ac > 2)
+			free(inputs);
+		
 	}
 	return (0);
 }
