@@ -61,8 +61,7 @@ static int	check_error_call_algorithym(char *inputs, t_list *list_a,
 {
 	if (!list_a || check_doubles(&list_a) || !check_char(inputs))
 	{
-		putstr("Error");
-		putstr("\n");
+		putstr("Error\n", 1);
 		ft_lstclear(&list_a);
 		return (0);
 	}
@@ -106,7 +105,7 @@ int	main(int ac, char **av)
 	list_b = NULL;
 	splitindex = -1;
 	if (ac < 2)
-		putstr("Error\n");
+		putstr("Error\n", 2);
 	else
 	{
 		inputs = av[1];
@@ -115,7 +114,6 @@ int	main(int ac, char **av)
 		check_error_call_algorithym(inputs, list_a, list_b);
 		if (ac > 2)
 			free(inputs);
-		
 	}
 	return (0);
 }

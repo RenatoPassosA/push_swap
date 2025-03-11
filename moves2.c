@@ -26,8 +26,8 @@ void	ra(t_list **a)
 	while (last->next)
 		last = last->next;
 	last->next = first;
-	putstr("ra");
-	putstr("\n");
+	putstr("ra", 1);
+	putstr("\n", 1);
 }
 
 void	rb(t_list **b)
@@ -44,16 +44,16 @@ void	rb(t_list **b)
 	while (last->next)
 		last = last->next;
 	last->next = first;
-	putstr("rb");
-	putstr("\n");
+	putstr("rb", 1);
+	putstr("\n", 1);
 }
 
 void	rr(t_list **a, t_list **b)
 {
 	ra(a);
 	rb(b);
-	putstr("rr");
-	putstr("\n");
+	putstr("rr", 1);
+	putstr("\n", 1);
 }
 
 void	rra(t_list **a)
@@ -76,8 +76,8 @@ void	rra(t_list **a)
 	first->next = NULL;
 	last->next = temp;
 	*a = last;
-	putstr("rra");
-	putstr("\n");
+	putstr("rra", 1);
+	putstr("\n", 1);
 }
 
 void	rrb(t_list **b)
@@ -100,6 +100,6 @@ void	rrb(t_list **b)
 	first->next = NULL;
 	last->next = temp;
 	*b = last;
-	putstr("rrb");
-	putstr("\n");
+	putstr("rrb", 1);
+	putstr("\n", 1);
 }

@@ -24,8 +24,8 @@ void	sa(t_list **a)
 	temp->next = new_first->next;
 	new_first->next = temp;
 	*a = new_first;
-	putstr("sa");
-	putstr("\n");
+	putstr("sa", 1);
+	putstr("\n", 1);
 }
 
 void	sb(t_list **b)
@@ -40,16 +40,16 @@ void	sb(t_list **b)
 	temp->next = new_first->next;
 	new_first->next = temp;
 	*b = new_first;
-	putstr("sa");
-	putstr("\n");
+	putstr("sa", 1);
+	putstr("\n", 1);
 }
 
 void	ss(t_list **a, t_list **b)
 {
 	sa(a);
 	sb(b);
-	putstr("ss");
-	putstr("\n");
+	putstr("ss", 1);
+	putstr("\n", 1);
 }
 
 void	pa(t_list **a, t_list **b)
@@ -62,8 +62,8 @@ void	pa(t_list **a, t_list **b)
 	*b = first_b->next;
 	first_b->next = *a;
 	*a = first_b;
-	putstr("pa");
-	putstr("\n");
+	putstr("pa", 1);
+	putstr("\n", 1);
 }
 
 void	pb(t_list **a, t_list **b)
@@ -76,6 +76,6 @@ void	pb(t_list **a, t_list **b)
 	*a = first_a->next;
 	first_a->next = *b;
 	*b = first_a;
-	putstr("pb");
-	putstr("\n");
+	putstr("pb", 1);
+	putstr("\n", 1);
 }

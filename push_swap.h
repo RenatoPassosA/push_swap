@@ -49,7 +49,7 @@ void				small_numbers(t_list **a, t_list **b);
 void				rotate_pos(t_list **a, int pos);
 int					ordered(t_list **head);
 int					check_doubles(t_list **a);
-void				putstr(char *str);
+void				putstr(char *str, int fd);
 void				*ft_calloc(size_t nmemb, size_t size);
 t_list				*ft_lstclear(t_list **lst);
 

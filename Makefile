@@ -11,9 +11,6 @@ $(NAME): $(SRC)
 .o:.c
 	$(CC) $(CCFLAGS) -c $< -o $@
 
-compile:
-	cc -Wall -Wextra -Werror -g -o push_swap *.c 
-
 clean:
 	rm -f $(SRC)
 
